@@ -37,9 +37,8 @@ export class GestorClub {
         const socios = [...this.data(), nuevoSocio];
         fs.writeFileSync("./socios.json", JSON.stringify(socios, null, 2));
     }
-    setSearchBySports(selectSport:keyof typeof Deportes) {
-        const deporteSocio = this.data().find((persona: { deporte: Deportes }) => persona.deporte.toString === selectSport.toString);
-        console.log(deporteSocio);        
+    setSearchBySports(selectSport:string) {
+        const deporteSocio = this.data().find((persona: { deporte: Deportes }) => persona.deporte.toString() === selectSport);                
         if (deporteSocio) {
             return deporteSocio;
         } else {

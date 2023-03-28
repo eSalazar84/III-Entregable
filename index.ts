@@ -38,9 +38,9 @@ console.log(equipoPrueba.data());
 
 //console.log("Busqueda por apellido",equipoPrueba.setSearchLastName(`salaZar`));
 
-equipoPrueba.setSearchBySports(`basket`)
+equipoPrueba.setSearchBySports(Deportes.basket)
 
-console.log(equipoPrueba.setSearchBySports(`basket`));
+console.log(equipoPrueba.setSearchBySports(Deportes.basket));
 
 //equipoPrueba.setSearchPhone(2281152685)
 

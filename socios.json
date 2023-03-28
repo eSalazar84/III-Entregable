@@ -1,11 +1,11 @@
 [
   {
-    "nombre": "eMILIANO",
-    "apellido": "sALAZAR",
+    "nombre": "Emiliano",
+    "apellido": "Salazar",
     "fechaDeNacimiento": "1984/09/20",
     "documento": 31104967,
     "telefono": 2281514468,
-    "miembroDesde": "1990/09/20",
+    "miembroDesde": "",
     "deporte": 1
   }
 ]
