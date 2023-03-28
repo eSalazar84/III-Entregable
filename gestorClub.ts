@@ -11,7 +11,8 @@ Debemos guardar 10 socios.
 algun dato que buscamos. Por ejemplo buscar socios por nombre, 
 por deporte, documento o telefono.
 */
-import { Jugador } from "./jugador";
+import { Jugador, Deportes} from "./jugador";
+
 const fs = require("fs");
 const readlineSync = require("readline-sync")
 
@@ -36,22 +37,40 @@ export class GestorClub {
         const socios = [...this.data(), nuevoSocio];
         fs.writeFileSync("./socios.json", JSON.stringify(socios, null, 2));
     }
-    setSearchLastName() {
-        /* const autoEncontrado = listadoAutos.find((auto) => auto.maker === maker);
-        if (autoEncontrado) {
-            console.log(`${maker} existe en el Registro.`);
-            return autoEncontrado;
+    setSearchBySports(selectSport:keyof typeof Deportes) {
+        const deporteSocio = this.data().find((persona: { deporte: Deportes }) => persona.deporte.toString === selectSport.toString);
+        console.log(deporteSocio);        
+        if (deporteSocio) {
+            return deporteSocio;
         } else {
-            console.log(`${maker} NO existe en el Registro.`);
-        } */
+            return `No se encontro socios que practiquen este deporte.`
+        }
     }
-    setSearchBySports() {
-
+    setSearchLastName(apellido: string) { 
+        const apellidoMinus: string = apellido.toLowerCase();
+        const nombreSocio = this.data().find((persona: { apellido: string; }) => persona.apellido.toLowerCase() === apellidoMinus);
+        if (nombreSocio) {
+            return nombreSocio
+        } else {
+            return `No se encontro el apellido que buscaba, intente nuevamente.`
+        }
     }
-    setSearchByDocument() {
-
+    setSearchByDocument(documento: number): string { 
+        if (documento.toString().length !== 8) return `ingrese un documento de 8 cifras por favor`;
+        const documentoSocio = this.data().find((persona: { documento: number }) => persona.documento === documento);
+        if (documentoSocio) {
+            return documentoSocio;
+        } else {
+            return `No se encontro el documento que buscaba, intente nuevamente.`;
+        }
     }
-    setSearchName() {
-
+    setSearchPhone(telefono: number) {
+        if (telefono.toString().length < 10 || telefono.toString().length > 13) return `ingrese un telefono de válido por favor`;
+        const documentoSocio = this.data().find((persona: { telefono: number }) => persona.telefono === telefono);
+        if (documentoSocio) {
+            return documentoSocio;
+        } else {
+            return `No se encontro el telefono que buscaba, intente nuevamente.`;
+        }
     }
 }

@@ -17,8 +17,31 @@ Tendremos la logica para la generacion del archivo JSON
 para agregar nuestros socios y los filtros.
 */
 import { GestorClub } from "./gestorClub";
+import { Deportes } from "./jugador";
 
 const equipoPrueba:GestorClub=new GestorClub();
-equipoPrueba.setAgregarSocio();
+equipoPrueba.setAgregarSocio()
+
+/* equipoPrueba.setAgregarSocio(`Emiliano`,`Salazar`,`1984/09/20`,31104967,2281514468,Deportes.futbol,new Date().toLocaleDateString());
+equipoPrueba.setAgregarSocio(`joselo`,`perez`,`1989/09/11`,35204967,2281513685,Deportes.basket,new Date().toLocaleDateString());
+equipoPrueba.setAgregarSocio(`Pepito`,`Cibrian`,`1995/09/11`,40204967,2281152685,Deportes.futbol,new Date().toLocaleDateString());
+equipoPrueba.setAgregarSocio(`Pepito`,`Cibrian`,`1995/09/11`,40204967,2281152685,Deportes.futbol,new Date().toLocaleDateString()); */
+
 
 console.log(equipoPrueba.data());
+
+//equipoPrueba.setSearchByDocument(31104967)
+
+//console.log("Busqueda por documento",equipoPrueba.setSearchByDocument(31104967));
+
+//equipoPrueba.setSearchLastName(`salaZar`)
+
+//console.log("Busqueda por apellido",equipoPrueba.setSearchLastName(`salaZar`));
+
+equipoPrueba.setSearchBySports(`basket`)
+
+console.log(equipoPrueba.setSearchBySports(`basket`));
+
+//equipoPrueba.setSearchPhone(2281152685)
+
+//console.log("telefono",equipoPrueba.setSearchPhone(2281514468))

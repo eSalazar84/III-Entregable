@@ -11,6 +11,7 @@ import { MiembroClub } from "./miembroClub";
 export enum Deportes {
     futbol, basket, zumba, voley, natacion, gym
 }
+export type selectSport = keyof typeof Deportes;
 
 export class Jugador extends MiembroClub {
     deporte: Deportes
