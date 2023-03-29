@@ -20,6 +20,7 @@ import { GestorClub } from "./gestorClub";
 
 const equipoPrueba:GestorClub=new GestorClub();
 equipoPrueba.setAddMember()
+equipoPrueba.setAddMember()
 
 /* equipoPrueba.setAgregarSocio(`Emiliano`,`Salazar`,`1984/09/20`,31104967,2281514468,Deportes.futbol,new Date().toLocaleDateString());
 equipoPrueba.setAgregarSocio(`joselo`,`perez`,`1989/09/11`,35204967,2281513685,Deportes.basket,new Date().toLocaleDateString());
@@ -27,7 +28,7 @@ equipoPrueba.setAgregarSocio(`Pepito`,`Cibrian`,`1995/09/11`,40204967,2281152685
 equipoPrueba.setAgregarSocio(`Pepito`,`Cibrian`,`1995/09/11`,40204967,2281152685,Deportes.futbol,new Date().toLocaleDateString()); */
 
 
-console.log(equipoPrueba.data());
+//console.log(equipoPrueba.data());
 
 //equipoPrueba.setSearchByDocument(31104967)
 

@@ -73,20 +73,19 @@ export class GestorClub {
             return `No se encontro el telefono que buscaba, intente nuevamente.`;
         }
     }
-    setDeleteMember (id:number):string{
-        const indexListMembers = this.data().findIndex((persona:{documento:number}) => persona.documento === id);
-        this.data().splice(0,1)
+    setDeleteMember(id: number): string {
+        const indexListMembers: number = this.data().findIndex((persona: { documento: number }) => persona.documento === id);
+        
         if (indexListMembers >= 0) {
-          this.data().splice(indexListMembers, 1);
-          console.log("El socio ", id, "se dio de baja");
-          //console.log(this.data());          
-          let members= [...this.data()]
-          fs.writeFileSync("./member.json", JSON.stringify(members));        
-          //console.log(members);    
-          return this.data();
+            //this.data().splice(indexListMembers, 1);            
+            console.log("El socio se dio de baja");
+            const sociosModificado = [...this.data().splice(indexListMembers, 1)]
+            //console.log(sociosModificado);
+            fs.writeFileSync("./socios.json", JSON.stringify(sociosModificado));
+            return this.data();
         } else {
             return `El socio ${id} no pudo darse de baja porque no se encontro`
-        } 
+        }
 
     }
 
