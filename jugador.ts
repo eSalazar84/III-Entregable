@@ -14,7 +14,7 @@ export enum Deportes {
 export type selectSport = keyof typeof Deportes;
 
 export class Jugador extends MiembroClub {
-    deporte: Deportes
+    deporte: any;
     constructor(nombre:string,apellido:string, fechaDeNacimiento:string, documento:number, telefono:number, deporte:Deportes,miembroDesde:string){
         super(nombre,apellido,fechaDeNacimiento,documento,telefono,miembroDesde);
         this.deporte=deporte
