@@ -18,10 +18,7 @@ const readlineSync = require("readline-sync")
 
 export class GestorClub {
     constructor() {
-        fs.writeFileSync("./socios.json", "[]")
-    }
-    data() {
-        return JSON.parse(fs.readFileSync("./socios.json"))
+        fs.writeFileSync("./socios.json", "[]");
     }
     setAddMember() {
         const nombre: string = readlineSync.question("Ingrese el nombre del afiliado: ");
@@ -33,10 +30,13 @@ export class GestorClub {
         const deporte = readlineSync.keyInSelect(listaDeportes, "Ingrese que deporte va a practicar: ");
         const play: any = Deportes[deporte]
         const miembroDesde: string = readlineSync.question("Ingrese la fecha desde que es miembro el socio en formate aaa/mmm/ddd: ");
-
+        
         const nuevoSocio = new Jugador(nombre, apellido, fechaDeNacimiento, documento, telefono, play, miembroDesde);
         const socios = [...this.data(), nuevoSocio];
         fs.writeFileSync("./socios.json", JSON.stringify(socios, null, 2));
+    }
+    data() {
+        return JSON.parse(fs.readFileSync("./socios.json"));
     }
     setSearchBySports(selectSport: string) {
         const deporteSocio = this.data().find((persona: { deporte: Deportes }) => persona.deporte.toString() === selectSport);
@@ -73,48 +73,4 @@ export class GestorClub {
             return `No se encontro el telefono que buscaba, intente nuevamente.`;
         }
     }
-    setDeleteMember(id: number): string {
-        const indexListMembers: number = this.data().findIndex((persona: { documento: number }) => persona.documento === id);
-        
-        if (indexListMembers >= 0) {
-            //this.data().splice(indexListMembers, 1);            
-            console.log("El socio se dio de baja");
-            const sociosModificado = [...this.data().splice(indexListMembers, 1)]
-            //console.log(sociosModificado);
-            fs.writeFileSync("./socios.json", JSON.stringify(sociosModificado));
-            return this.data();
-        } else {
-            return `El socio ${id} no pudo darse de baja porque no se encontro`
-        }
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /* setDeleteMember(id: number): string {
-        const indexListMembers: number = this.data().findIndex((persona: { documento: number }) => persona.documento == id);
-        if (indexListMembers >= 0) {
-            this.data().splice(indexListMembers, 1);
-            const sociosModificado = [...this.data()]
-            fs.writeFileSync("./socios.json", JSON.stringify(sociosModificado))
-            //console.log(`Ha sido eliminado del Registro de socios: ${id}`);
-            return this.data();
-        } else {
-            return `El socio ${id} no ha sido eliminado`;
-        }
-    } */
 }
